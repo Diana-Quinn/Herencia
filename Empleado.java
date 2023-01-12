@@ -1,51 +1,74 @@
 
-public class Empleado {
+public class Empleado {//clase padre Empleado
 	
-	public String nombre = "";
-	private int edad = 0;
-	private boolean estadoSoltero = false;
-	private String calificacion="";
+	//inicializamos las variables
+	private String nombre="";
+	private String cédula="";
+	private int edad=0;
+	private String estadoCivil="";
+	private int salario=0;
 	
-	public String getNombre() { //para obtener nombre del empleado
+	private String clasificacion="";
+	
+	//getters y setters
+	public String getNombre() {
 		return nombre;
 	}
-	public void setNombre(String nombre) { //para setear o establecer nombre del empleado
+	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
+	public String getCédula() {
+		return cédula;
+	}
+	public void setCédula(String cédula) {
+		this.cédula = cédula;
+	}
 	public int getEdad() {
 		return edad;
 	}
 	
 	public void setEdad(int edad) {
+	    //Mensaje para edades 
+		if(this.edad < 18 || this.edad > 45) {
+	        System.out.println("La edad debe ser entre 18 y 45 años.");
+	       }
 		this.edad = edad;
 	}
-	
-	public boolean isEstadoSoltero() {
-		return estadoSoltero;
+	public String getEstadoCivil() {
+		return estadoCivil;
+	}
+	public void setEstadoCivil(String estadoCivil) {
+		this.estadoCivil = estadoCivil;
+	}
+	public int getSalario() {
+		return salario;
+	}
+	public void setSalario(int salario) {
+		this.salario = salario;
 	}
 	
-	public void setEstadoSoltero(boolean estadoSoltero) {
-		this.estadoSoltero = estadoSoltero;
-	}
-	
-	public void asignarCalificacion() {
+	//metodo asignarClasificacion
+	public void asignarClasificación(){  
 		if(this.getEdad()<=21) {
-			this.calificacion="Principiante";
+			this.clasificacion="Principiante";
 		} else if(this.getEdad()<=35 && this.getEdad()>=22) {
-			this.calificacion="Intermedio";
+			this.clasificacion="Intermedio";
 		} else if(this.getEdad()>35) {
-			this.calificacion="Senior";
+			this.clasificacion="Senior";
 		}
-	}
+        System.out.println( "Clasficación por Edad: " + clasificacion );
+    }
 	
-	@Override
-	public String toString() {
-		return "Empleado [nombre=" + nombre + ", edad=" + edad + ", estadoSoltero=" + estadoSoltero + ", calificacion="
-				+ calificacion + "]";
-	}
+	//metodo para imprimir
+	public void imprimir() {
+        System.out.println("\nNombre: " + this.getNombre() + 
+                "\nCédula: " + this.getCédula() + 
+                "\nEdad: " + this.getEdad());
+        asignarClasificación();
+        System.out.println("Estado Civil: " + this.getEstadoCivil() + 
+                "\nSalario: " + this.getSalario());
+    }
 	
-	
-	
+
 
 }
